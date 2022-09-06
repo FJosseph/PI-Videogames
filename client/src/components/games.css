@@ -1,0 +1,6 @@
+.container-games{
+    display: flex;
+    padding: 5%;
+    flex-wrap: wrap;
+    justify-content: center;
+}

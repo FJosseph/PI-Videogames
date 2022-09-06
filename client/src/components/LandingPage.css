@@ -1,0 +1,41 @@
+.landing-page{
+    display: flex;
+    box-sizing: border-box;
+    background: url('../img/1366_2000.jpeg');
+    background-size: 110%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    animation: fanimado 8s infinite;
+}
+.btn-home {
+    display: inline-block;
+    background-color: transparent;
+    height: 40px;
+    width: 100px;
+    font-family: consolas;
+    font-size: 24px;
+    letter-spacing: 4px;
+    color: white;
+    transition: 0.1s;
+    justify-content: center;
+    border-color: white;
+    
+}
+.btn-home:hover {
+    background-color: #a945c7;
+    box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
+    border: none;
+    transition-delay: 1s;
+}
+@keyframes fanimado {
+    0%{
+        background-position: 15% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 15% 50%;
+    }
+}

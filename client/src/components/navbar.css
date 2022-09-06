@@ -1,0 +1,29 @@
+.navbar{
+    height: 60px;
+    width: 100%;
+    background-color: #303236;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    color: white;
+}
+.list-navbar{
+    display: flex;
+    list-style: none;
+    height: 100%;
+}
+
+.list-navbar form {
+    display: flex;
+}
+#created{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+#created a{
+    text-decoration: none; 
+    color: white;   
+}
