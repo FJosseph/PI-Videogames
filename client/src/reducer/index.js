@@ -1,5 +1,6 @@
 const initialState = {
     videogames: [],
+    allVideogames: [],
     gamesSearched: [],
     gameDetail: {},
     gamesCreated: []
@@ -10,17 +11,75 @@ export default function rootReducer(state = initialState, action) {
         case 'GET_ALL_GAMES':
             return {
                 ...state,
-                videogames: action.payload
+                videogames: action.payload,
+                allVideogames: action.payload
             }
         case 'GET_GAME_SEARCH':
             return {
                 ...state,
-                gamesSearched: action.payload
+                videogames: action.payload,
+                allVideogames: action.payload
+            }
+        case 'FILTER_GAME_BY_GENRE':
+            const games = state.allVideogames
+            const genre = action.payload
+            const filterGame = genre === 'Todos'?games:games.filter(x => {
+                const genres = x.genres.filter(z=>z.name === genre)
+                // if(genres.length) return x
+                return genres.length && x
+            })
+            return {
+                ...state,
+                videogames:filterGame,
+            }
+        case 'FILTER_BY_CREATED':
+            const allGames = state.allVideogames
+            const created = action.payload
+            const filter  = created === 'creados'?allGames.slice(100): allGames.slice(0, 100)
+            return {
+                ...state,
+                videogames: created === 'Todos'? allGames : filter
+            }
+
+        case 'SORT_BY_NAME':
+            const gamS = [...state.videogames]
+            const sortGame = action.payload === 'asc'?gamS.sort((a,b)=>{
+                if (a.name > b.name) {
+                    return 1;
+                }
+                if (a.name < b.name) {
+                    return -1;
+                }
+                return 0
+            }): gamS.sort((a,b)=>{
+                if (a.name > b.name) {
+                    return -1;
+                }
+                if (a.name < b.name) {
+                    return 1;
+                }
+                return 0
+            })
+            return {
+                ...state,
+                videogames: sortGame
+            }
+        case 'SORT_BY_RATING':
+            const allVg = [...state.allVideogames]
+            const ratingSort = action.payload === 'mayor'? allVg.sort((a,b)=>a.rating-b.rating):allVg.sort((a,b)=>b.rating-a.rating)
+            return {
+                ...state,
+                videogames: action.payload === 'Todos'?state.allVideogames: ratingSort
             }
         case 'GET_DETAIL_GAME':
             return {
                 ...state,
                 gameDetail: action.payload
+            }
+        case 'ADD_GAME':
+            return {
+                ...state,
+                gamesCreated: [...state.gamesCreated, action.payload]
             }
         default:
             return {

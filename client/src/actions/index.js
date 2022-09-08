@@ -1,3 +1,4 @@
+import axios from "axios";
 export function getGames() {
     return async function (dispatch) {
         return fetch('http://localhost:3001/videogames')
@@ -7,10 +8,10 @@ export function getGames() {
             payload: data
         }))
         // try {
-        //     const videogames = await fetch('http://localhost:3001/videogames')
+        //     const videogames = await axios.get('http://localhost:3001/videogames')
         //     return dispatch({
         //         type: 'GET_ALL_GAMES',
-        //         payload: videogames.json()
+        //         payload: videogames
         //     })
         // } catch (e) {
         //     console.log(e);
@@ -59,8 +60,50 @@ export function gameDetail(id) {
     }    
 }
 
+export function filterGameByGenre(payload) {
+    return {
+        type: 'FILTER_GAME_BY_GENRE',
+        payload
+    }
+}
+
+export function filterByCreated(payload) {
+    return {
+        type: 'FILTER_BY_CREATED',
+        payload
+    }    
+}
+
+export function sortAlfabéticamente(payload){
+    return {
+        type: 'SORT_BY_NAME',
+        payload
+    }
+}
+
+export function sortByRating(payload) {
+    return {
+        type: 'SORT_BY_RATING',
+        payload
+    }    
+}
+
 export function addGame(body) {
-    return function (dispatch) {
-        
+    return async function (dispatch) {
+        return axios.post('http://localhost:3001/videogames', body)
+        .then(data=> dispatch({
+            type: 'ADD_GAME',
+            payload: data
+        }))
+        .catch(e=>console.log(e))
+        // try {
+        //     const add = await axios.post('http://localhost:3001/videogames', body)
+        //     return dispatch({
+        //         type: 'ADD_GAME',
+        //         payload:  add
+        //     })
+        // } catch (error) {
+        //     console.log({error: error.message});
+        // }
     }    
 }

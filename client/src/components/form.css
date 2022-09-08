@@ -1,0 +1,10 @@
+#form-add{
+    display: flex;
+    flex-direction: column;
+    padding: 10% 30%;
+}
+
+#form-add form{
+    display: flex;
+    flex-direction: column;
+}

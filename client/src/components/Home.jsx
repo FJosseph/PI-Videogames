@@ -21,8 +21,8 @@ export default function Home() {
     }, [dispatch])
     return (
         <section id="container">
-            <Paginado allGames={gamesSearched.length?gamesSearched.length:videogames.length} gamesPágina={gamesPágina} paginado={paginado}/>
-            {gamesSearched.length?<Games games={gamesSearched}/>:<Games games={gamesActuales}/>
+            <Paginado allGames={videogames.length} gamesPágina={gamesPágina} paginado={paginado}/>
+            {<Games games={gamesActuales}/>
             }
         </section>
     )
