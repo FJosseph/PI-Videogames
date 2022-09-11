@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { Op } = require('sequelize');
-const { Videogame } = require('../db');
+const { Videogame, Genre } = require('../db');
 const get = async ()=>{
         let gamesPrev = []
         let page = 1
@@ -18,7 +18,7 @@ const get = async ()=>{
             gamesPrev = gamesPrev.concat(res)         
             page++
         }
-        const responseDb = await Videogame.findAll()
+        const responseDb = await Videogame.findAll({include: Genre})
         console.log(gamesPrev.length);
         return gamesPrev.concat(responseDb)
 }

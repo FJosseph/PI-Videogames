@@ -38,7 +38,7 @@ const NavBar = ()=>{
     return (
         <header className="navbar">
             <div id="created">
-            <Link to='/crearGame'>
+            <Link to='/addGame'>
                 Crear Game
             </Link>
             </div>

@@ -2,9 +2,52 @@
     display: flex;
     flex-direction: column;
     padding: 10% 30%;
+    box-sizing: border-box;
+    height: 100vh;
+    background:url('../img/Marvels-Spider-Man.jpg');
 }
 
 #form-add form{
     display: flex;
     flex-direction: column;
+}
+
+form input[type="checkbox"] {
+    display: none;
+}
+.checkbox label {
+    color: red;
+    background-color: white;
+    padding: 5px 15px 5px 51px;
+    display: inline-block;
+    position: relative;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.checkbox label:hover{
+    background-color:dimgray;
+}
+.checkbox label:before{
+    content: "";
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    background-color: none;
+    border: 2px solid red;
+    position: absolute;
+    /* border-radius: 50%; */
+    left: 17px;
+    /* top: 4px; */
+}
+.checkbox input[type="checkbox"]:checked + label{
+    padding: 5px 15px;
+    background-color: red;
+    color: white;
+}
+.checkbox input[type="checkbox"]:checked + label::before{
+    display: none;
 }

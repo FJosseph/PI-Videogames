@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Games from "./Games";
 import { getGames } from "../actions";
 import Paginado from "./Paginado";
+import './home.css'
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -17,12 +18,12 @@ export default function Home() {
         setPáginaActual(pageNumber)
     }
     useEffect(()=>{
-        dispatch(getGames())
+       dispatch(getGames())
     }, [dispatch])
     return (
         <section id="container">
             <Paginado allGames={videogames.length} gamesPágina={gamesPágina} paginado={paginado}/>
-            {<Games games={gamesActuales}/>
+            {videogames.length?<Games games={gamesActuales}/>:'Espera un momento...'
             }
         </section>
     )

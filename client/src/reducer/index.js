@@ -35,7 +35,7 @@ export default function rootReducer(state = initialState, action) {
         case 'FILTER_BY_CREATED':
             const allGames = state.allVideogames
             const created = action.payload
-            const filter  = created === 'creados'?allGames.slice(100): allGames.slice(0, 100)
+            const filter  = created === 'creados'?state.gamesCreated: allGames.slice(0,100)
             return {
                 ...state,
                 videogames: created === 'Todos'? allGames : filter
@@ -77,9 +77,11 @@ export default function rootReducer(state = initialState, action) {
                 gameDetail: action.payload
             }
         case 'ADD_GAME':
+            // let data = action.payload.data
+            // data.genres = 
             return {
                 ...state,
-                gamesCreated: [...state.gamesCreated, action.payload]
+                gamesCreated: [...state.gamesCreated, action.payload.data]
             }
         default:
             return {

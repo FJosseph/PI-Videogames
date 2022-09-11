@@ -1,4 +1,9 @@
 #container{
-    display: flex;
-    padding: 0 10%;
+    /* background: url('../img/fondo-home.jpg'); */
+    /* background-color: red; */
+}
+
+#container nav ul{
+    margin: 0;
+    padding: 1.5%;
 }

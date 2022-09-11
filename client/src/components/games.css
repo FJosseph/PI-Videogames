@@ -1,6 +1,9 @@
 .container-games{
     display: flex;
-    padding: 5%;
+    padding: 0 5%;
     flex-wrap: wrap;
     justify-content: center;
+}
+.container-games a{
+    text-decoration: none;
 }

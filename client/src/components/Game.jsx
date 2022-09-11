@@ -7,8 +7,10 @@ const Game  = ({id, name, background_image, rating})=>{
         <Link to={`/detail/${id}`}>
             <div className="card-game">
                 <img className="img" src={background_image} alt="" />
-                <h1>{name}</h1>
-                <p>{rating}</p>
+                <div>
+                    <h1>{name}</h1>
+                    <p>{rating}</p>
+                </div>
             </div>        
         </Link>
     )

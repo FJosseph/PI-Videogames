@@ -20,9 +20,10 @@ module.exports = async (req, res) => {
         let géneros = await Genre.findAll()
         géneros = await géneros.map(x=>x.dataValues)
         const idGenres = genres.map(g=>géneros.filter(x=> x.name === g)[0].id)
+        const nameGenres = genres.map(g=>géneros.filter(x=> x.name === g)[0].name)
         console.log(idGenres);
         await add.addGenres(idGenres)
-        res.status(201).send(add)
+        res.status(201).send({...add.dataValues,genres: nameGenres.map(x=>{return {name:x}})})
     } catch (error) {
         res.status(404).send({error: error.message})
     }

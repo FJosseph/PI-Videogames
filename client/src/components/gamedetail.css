@@ -1,0 +1,75 @@
+.container-detail{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 10%;
+    flex-direction: column;
+    height: 100vh;
+    background: url('https://demo.codezeel.com/opencart/OPC06/OPC060134/catalog/view/theme/GamesHouse/image/codezeel/body_bkg.jpg');
+    color: white;
+}
+#go-home{
+    background-color: rgba(0,0,0,.28);
+    width: 80%;
+    margin: 15px;
+    padding: 12px;
+}
+
+.container-detail a{
+    text-decoration: none;
+    color: white;
+}
+#box-detail{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 500px;
+}
+.detail{
+    display: flex;
+    height: 64%;
+}
+#box-detail p {
+    overflow: scroll;
+    margin: 0;
+}
+.img-container{
+    width: 40%;
+}
+.detail-text{
+    width: 60%;
+    padding: 0 15px;
+    text-align: initial;
+}
+.detail-text h1{
+    border-bottom: 1px solid #4a4a4a;
+    margin: 0;
+}
+.img-container img {
+    max-width: 100%;
+    height: 100%;
+}
+#description{
+    display: flex;
+    overflow: hidden;
+    padding: 15px;
+    border: 1px solid #4a4a4a;
+    height: 25%;
+}
+
+
+@media (max-width: 480px) {
+    #box-detail{
+        width: 90%;
+    }    
+}
+
+@media (max-width: 930px) {
+    .detail{
+        height: auto;
+    }    
+    #description{
+        height: auto;
+    }
+}

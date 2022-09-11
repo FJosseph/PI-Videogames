@@ -8,12 +8,12 @@ const getDetail = async (id)=>{
         include: Genre
     })
     // const genre = await detailDb.getGenre()
-    const detailDB = {
-        ...detailDb,
-        // genres: genre
-    }
-    console.log(detailDB);
-    if(detailDb)return detailDB
+    // const detailDB = {
+    //     ...detailDb.toJSON(),
+    //     // genres: genre
+    // }
+    console.log(detailDb);
+    if(detailDb)return detailDb.dataValues
     const detail = await axios.get(`https://api.rawg.io/api/games/${id}?key=5c5300aadbb34f8e8154f5a4ee22a589`)
     const {name, description, parent_platforms, genres, released, rating , background_image} = detail.data
     return {
