@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Games from "./Games";
-import { getGames } from "../actions";
+import { getGames, getGenres } from "../actions";
 import Paginado from "./Paginado";
 import './home.css'
 
@@ -19,6 +19,7 @@ export default function Home() {
     }
     useEffect(()=>{
        dispatch(getGames())
+       dispatch(getGenres())
     }, [dispatch])
     return (
         <section id="container">

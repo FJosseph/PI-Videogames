@@ -107,3 +107,13 @@ export function addGame(body) {
         // }
     }    
 }
+
+export function getGenres() {
+    return function (dispatch) {
+        return axios.get('http://localhost:3001/genres')        
+        .then(data=>dispatch({
+            type: 'GET_GENRES',
+            payload: data
+        }))
+    }    
+}

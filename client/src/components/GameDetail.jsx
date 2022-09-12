@@ -28,6 +28,7 @@ const GameDetail = ()=>{
                     <h4>Géneros:</h4>{genres && genres.map(x=>x.name).join(' | ')}
                     <h4>Fecha de lanzamiento:</h4>{fecha_lanzamiento}
                     <h4>Rating:</h4>{rating}★
+                    <h4>Plataformas:</h4>{plataformas && plataformas.map(x=>x.platform.name).join(' | ')}
                     {/* {plataformas.map(x=>(<p>{x.platforms.name}</p>))} */}
                     {/* <p>{plataformas}</p> */}
                     {/* <p>{genres}</p> */}

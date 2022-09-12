@@ -14,8 +14,8 @@ const getGenre = async () =>{
 module.exports = async (req, res)=>{
     try {
         const genres = await getGenre()
-       await genres.map(x=>Genre.create(x))
-        res.send('Géneros agregados')
+       await genres.map(x=>Genre.findOrCreate({where: x}))
+        res.json(genres)
     } catch (error) {
         res.status(404).send({error: error.message})
     }

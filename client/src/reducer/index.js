@@ -1,7 +1,7 @@
 const initialState = {
     videogames: [],
     allVideogames: [],
-    gamesSearched: [],
+    allGenres: [],
     gameDetail: {},
     gamesCreated: []
 }
@@ -82,6 +82,11 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 gamesCreated: [...state.gamesCreated, action.payload.data]
+            }
+        case 'GET_GENRES':
+            return {
+                ...state,
+                allGenres: action.payload.data
             }
         default:
             return {
