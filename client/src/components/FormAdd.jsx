@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addGame } from "../actions";
+import { addGame, getGames } from "../actions";
+import { useHistory } from 'react-router-dom'
 import './form.css'
 
 export function validate(input) {
@@ -16,6 +17,7 @@ export function validate(input) {
 }
 
 const FormAdd = ()=>{
+    const navigate = useHistory()
     const [input, setInput] = useState({
         name: "",
         description: "",
@@ -85,9 +87,13 @@ const FormAdd = ()=>{
     }
     function handleSubmit(e) {
         e.preventDefault()
-        !input.genres.length || !input.plataformas.length || Object.keys(errores)?alert('Faltan agregar plataformas o géneros'):
-        dispatch(addGame(input)) &&
-        alert('¡Videogame creado satisfactoriamente!')
+        if(!input.genres.length || !input.plataformas.length || Object.keys(errores).length)alert('Faltan agregar campos')
+        else {
+            dispatch(addGame(input))
+            alert('¡Videogame creado satisfactoriamente!')
+            navigate.push('/home')
+            dispatch(getGames())
+        }
         // setInput({
         //     name: "",
         //     description: "",

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './game.css'
 
-const Game  = ({id, name, background_image, rating, genres , precio})=>{
+const Game  = ({id, name, background_image, rating, genres})=>{
     return (
         <Link to={`/detail/${id}`}>
             <div className="card-game">
@@ -11,7 +11,7 @@ const Game  = ({id, name, background_image, rating, genres , precio})=>{
                     <h1>{name}</h1>
                     {/* <p>{rating}★</p> */}
                     <p>{genres.map(x=>x.name).join(' | ')}</p>
-                    <p>{precio}</p>
+                    {/* <p>{precio}</p> */}
                 </div>
             </div>        
         </Link>

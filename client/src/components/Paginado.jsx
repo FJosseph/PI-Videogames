@@ -9,7 +9,7 @@ const Paginado = ({allGames, gamesPágina, paginado})=>{
         <nav>
             <ul>
             {índicesPágina && índicesPágina.map(x=>(
-                <button onClick={()=>paginado(x)}>{x}</button>
+                <button key={x} onClick={()=>paginado(x)}>{x}</button>
             ))}
             </ul>
         </nav>

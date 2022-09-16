@@ -14,7 +14,7 @@ const get = async ()=>{
                     genres: g.genres,
                     plataformas: g.parent_platforms,
                     rating: g.rating,
-                    precio: 120
+                    // precio: 120
                 }
             })   
             gamesPrev = gamesPrev.concat(res)         
