@@ -6,7 +6,12 @@ const { Videogame, conn } = require('../../src/db.js');
 
 const agent = session(app);
 const videogame = {
-  name: 'Super Mario Bros',
+    id: 1000000,
+    name: 'Pro Evolution Soccer',
+    description: 'PES',
+    fecha_lanzamiento: '2022-09-12',
+    rating: 4,
+    plataformas: [{platform:{name: 'PC'}}]
 };
 
 describe('Videogame routes', () => {
@@ -16,9 +21,24 @@ describe('Videogame routes', () => {
   }));
   beforeEach(() => Videogame.sync({ force: true })
     .then(() => Videogame.create(videogame)));
-  describe('GET /videogames', () => {
-    it('should get 200', () =>
-      agent.get('/videogames').expect(200)
-    );
-  });
-});
+  describe.skip('GET /videogames', () => {
+     it('should get 200', async() =>
+      await agent.get('/videogames').expect(200))
+     it('Propiedad length del array debe ser igual a 101', async ()=>{
+        const response = await agent.get('/videogames')
+        expect(response.length).equal(101)
+      })
+    })    
+  describe('GET /videogame/{id}', () => {
+     it('should get 200', async() =>
+      await agent.get('/videogame/1000000').expect(200))
+    })    
+     it('ID Debe ser igual a 10000000', async () =>{
+      const response = await agent.get('/videogame/1000000')
+      expect(response.body.id).equal(1000000) 
+     })
+  describe('GET /videogames?name={}', () => {
+     it('should get 200', async() =>
+      await agent.get('/videogames?name=pes').expect(200))
+    })    
+    });

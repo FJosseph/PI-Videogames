@@ -12,7 +12,9 @@ const get = async ()=>{
                     name: g.name,
                     background_image: g.background_image,
                     genres: g.genres,
-                    rating: g.rating
+                    plataformas: g.parent_platforms,
+                    rating: g.rating,
+                    precio: 120
                 }
             })   
             gamesPrev = gamesPrev.concat(res)         
@@ -30,6 +32,7 @@ const getName = async (name) => {
             name: g.name,
             background_image: g.background_image,
             genres: g.genres,
+            plataformas: g.parent_platforms,
             rating: g.rating
         }
     })
@@ -39,7 +42,8 @@ const getName = async (name) => {
             name: {
                 [Op.like]: `${name}%`
             }
-        }
+        },
+        include: Genre
     })
     return result.concat(searchDb)
 }

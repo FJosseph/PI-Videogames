@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import './navbar.css'
-import { filterByCreated, filterGameByGenre, getGamesBySearch, sortAlfabéticamente, sortByRating } from "../actions";
+import { filterByCreated, filterGameByGenre, filterGameByPlatform, getGamesBySearch, sortAlfabéticamente, sortByRating } from "../actions";
 const NavBar = ()=>{
     const [input, setInput] = useState('')
     const [oder, setOrder] = useState('')
     const [alfb, setAlfb] = useState('')
+    const genres = useSelector(state=>state.allGenres)
     const dispatch = useDispatch()
     function handleChange(e) {
         setInput(e.target.value)
@@ -21,6 +22,10 @@ const NavBar = ()=>{
         // e.preventDefault()
         dispatch(filterGameByGenre(e.target.value))
     }
+
+    // function handleFilterPlatform(e) {
+    //     dispatch(filterGameByPlatform(e.target.value))
+    // }
 
     function handleFilterCreated(e) {
         dispatch(filterByCreated(e.target.value))        
@@ -46,6 +51,9 @@ const NavBar = ()=>{
             <ul className="list-navbar">
                 <li>
                     <select name="genres" onChange={e=> handleFilterGenre(e)}>
+                        {/* {genres.map(x=>{
+                            return (<option value={x.name}>{x.name}</option>)
+                        })} */}
                         <option value="Todos">Todos los géneros</option>
                         <option value="Action">Action</option>
                         <option value="Indie">Indie</option>
@@ -68,6 +76,16 @@ const NavBar = ()=>{
                         <option value="Card">Card</option>
                     </select>
                 </li>
+                {/* <li>
+                    <select name="platform" onChange={e=>handleFilterPlatform(e)} >
+                        <option value='Todos'>Todos por plataforma</option>
+                        {['PlayStation','Xbox','PC','Nintendo','Android','iOS'].map(x=>(
+                            <>
+                                <option value={x}>{x}</option>
+                            </>
+                        ))}
+                    </select>
+                </li> */}
                 <li>
                     <select name="rating" onChange={e=>handleOrderByRating(e)}>
                         <option value="Todos">Todos por rating</option>

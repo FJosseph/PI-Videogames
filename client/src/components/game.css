@@ -19,6 +19,7 @@
 .card-game div{
     height: 30%;
     padding: 2.5%;
+    background: white;
 }
 .card-game h1 {
     margin: auto;

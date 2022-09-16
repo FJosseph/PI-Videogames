@@ -3,7 +3,7 @@ const { Videogame, Genre } = require('../db');
 require('sequelize')
 let id = 1000000;
 module.exports = async (req, res) => {
-    const { name, description, plataformas ,fecha_lanzamiento, rating ,genres} = req.body
+    const { name, description, plataformas ,fecha_lanzamiento, rating ,genres, precio} = req.body
     if(!name || !description || !plataformas || !genres.length)return res.status(404).send('Se requieren más valores')
     if(rating > 5 || rating < 0)return res.status(404).send('Rating inválido')
     try {
@@ -15,7 +15,8 @@ module.exports = async (req, res) => {
             rating,
             plataformas: plataformas.map(p =>{
                 return {platform:{name: p}}
-            })
+            }),
+            // precio
         })
         let géneros = await Genre.findAll()
         géneros = await géneros.map(x=>x.dataValues)

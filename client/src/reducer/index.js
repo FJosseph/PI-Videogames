@@ -35,12 +35,21 @@ export default function rootReducer(state = initialState, action) {
         case 'FILTER_BY_CREATED':
             const allGames = state.allVideogames
             const created = action.payload
-            const filter  = created === 'creados'?state.gamesCreated: allGames.slice(0,100)
+            const filter  = created === 'creados'?allGames.slice(100): allGames.slice(0,100)
             return {
                 ...state,
                 videogames: created === 'Todos'? allGames : filter
             }
-
+        // case 'FILTER_GAME_BY_PLATFORM':
+        //     const platform = action.payload
+        //     const filterPlatform = platform === 'Todos'? state.allVideogames: state.videogames.filter(x=>{
+        //         const game = x.plataformas.filter(a=>a.platform.name === platform)
+        //         return game.length && x
+        //     })
+        //     return {
+        //         ...state,
+        //         videogames: filterPlatform
+        //     }
         case 'SORT_BY_NAME':
             const gamS = [...state.videogames]
             const sortGame = action.payload === 'asc'?gamS.sort((a,b)=>{

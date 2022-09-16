@@ -9,6 +9,7 @@ export function validate(input) {
         if(!input.name) errors.name = 'Name is required';
         if(!input.description) errors.description = 'Description is required'
         if(!input.rating) errors.rating = 'Rating is required'
+        if(input.rating > 5 || input.rating < 0) errors.rating = 'Rating is out of range'
         // if(!input.plataformas.length) errors.plataformas = 'Plataformas is required'
         // if(!input.genres.length) errors.plataformas = 'Genres is required'
         return errors
@@ -21,7 +22,8 @@ const FormAdd = ()=>{
         fecha_lanzamiento: '',
         rating: '',
         plataformas: [],
-        genres: []
+        genres: [],
+        // precio: ''
     })
 
     const [genres, setGenres] = useState({
@@ -49,7 +51,8 @@ const FormAdd = ()=>{
         'Playstation':false,
         'Xbox': false,
         'PC': false,
-        'Nintendo': false
+        'Nintendo': false,
+        'Android': false
     })
 
     const [errores, setErrors] = useState({})
@@ -82,7 +85,7 @@ const FormAdd = ()=>{
     }
     function handleSubmit(e) {
         e.preventDefault()
-        !input.genres.length || !input.plataformas.length?alert('Faltan agregar plataformas o géneros'):
+        !input.genres.length || !input.plataformas.length || Object.keys(errores)?alert('Faltan agregar plataformas o géneros'):
         dispatch(addGame(input)) &&
         alert('¡Videogame creado satisfactoriamente!')
         // setInput({
@@ -116,8 +119,13 @@ const FormAdd = ()=>{
                 {errores.fecha_lanzamiento && (<p>{errores.fecha_lanzamiento}</p>)}
                 <input name='rating' value={input.rating} onChange={handleInputChange} type="number" placeholder="Rating" max='5'min='0' required/>
                 {errores.rating && (<p>{errores.rating}</p>)}
+                {/* <input name='precio' value={input.precio} onChange={handleInputChange} type="number" placeholder="Precio" max='200'min='0' required/> */}
                 <label>Elige los géneros:</label>
                     <div className="checkbox">
+                        {/* {Object.keys(genres).map(x=>{
+                            return (<><input checked={genres[x]} type='checkbox' onChange={handleCheckBox} value={`${x}`} id={`${x}`}/>
+                            <label htmlFor={`${x}`}>{x}</label></>)
+                        })} */}
                         <input checked={genres.Action} type='checkbox' onChange={handleCheckBox} value="Action" id="Action"/>
                         <label htmlFor="Action">Action</label>
                         <input checked={genres.Indie} type='checkbox' onChange={handleCheckBox} value="Indie" id="Indie"/>
@@ -167,6 +175,8 @@ const FormAdd = ()=>{
                         <label htmlFor="PC">PC</label>
                         <input checked={plataformas.Nintendo} type='checkbox' onChange={handlePlataformas} value="Nintendo" id="Nintendo"/>
                         <label htmlFor="Nintendo">Nintendo</label>
+                        <input checked={plataformas.Android} type='checkbox' onChange={handlePlataformas} value="Android" id="Android"/>
+                        <label htmlFor="Android">Android</label>
                     </div>
                 <input style={{width:"30%",margin:"12px", background:"red", color:"white", cursor:"pointer"}} type="submit" value='Agregar game'/>
             </form>

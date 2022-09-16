@@ -49,13 +49,13 @@ export function gameDetail(id) {
             payload: data
         }))
         // try {
-        //     const detail = await fetch(`http://localhost:3001/videogame/${id}`)
+        //     const detail = await axios.get(`http://localhost:3001/videogame/${id}`)
         //     return dispatch({
         //         type: 'GET_DETAIL_GAME',
-        //         payload: detail.json()
+        //         payload: detail.data
         //     })
         // } catch (e) {
-            
+        //     console.log(e);
         // }        
     }    
 }
@@ -66,6 +66,13 @@ export function filterGameByGenre(payload) {
         payload
     }
 }
+
+// export function filterGameByPlatform(payload) {
+//     return {
+//         type: 'FILTER_GAME_BY_PLATFORM',
+//         payload
+//     }
+// }
 
 export function filterByCreated(payload) {
     return {

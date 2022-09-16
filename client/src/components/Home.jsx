@@ -18,13 +18,13 @@ export default function Home() {
         setPáginaActual(pageNumber)
     }
     useEffect(()=>{
-       dispatch(getGames())
+       !videogames.length && dispatch(getGames())
        dispatch(getGenres())
     }, [dispatch])
     return (
         <section id="container">
             <Paginado allGames={videogames.length} gamesPágina={gamesPágina} paginado={paginado}/>
-            {videogames.length?<Games games={gamesActuales}/>:'Espera un momento...'
+            {videogames.length?<Games games={gamesActuales}/>:<div style={{height:"100vh", color: "white"}}>'Sin resultados por el momento...'</div>
             }
         </section>
     )

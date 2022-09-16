@@ -46,7 +46,7 @@ form input[type="checkbox"] {
 .checkbox label {
     color: red;
     background-color: none;
-    padding: 5px 15px 5px 51px;
+    padding: 5px 8px 5px 41px;
     display: inline-block;
     position: relative;
     border-radius: 4px;
@@ -62,8 +62,8 @@ form input[type="checkbox"] {
 }
 .checkbox label:before{
     content: "";
-    width: 17px;
-    height: 17px;
+    width: 13px;
+    height: 13px;
     display: inline-block;
     background-color: none;
     border: 2px solid red;

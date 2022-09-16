@@ -15,9 +15,27 @@
     height: 100%;
 }
 
+.list-navbar li{
+    padding: 0 4px;
+}
+
+select {
+	border-radius: 5px;
+	border: none;
+}
+
 .list-navbar form {
     display: flex;
 }
+
+.list-navbar form li input{
+    color: white;
+    background: none;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 2px;
+}
+
 #created{
     height: 100%;
     display: flex;
